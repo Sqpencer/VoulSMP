@@ -131,6 +131,15 @@
       text-align: center;
     }
 
+    .badges-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -142,7 +151,6 @@
       font-size: 0.85rem;
       font-weight: 700;
       color: #3fb950;
-      margin-bottom: 1.5rem;
     }
 
     .status-dot {
@@ -151,6 +159,22 @@
       background-color: #3fb950;
       border-radius: 50%;
       box-shadow: 0 0 10px #3fb950;
+    }
+
+    .launch-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 59, 59, 0.15);
+      border: 1px solid rgba(255, 59, 59, 0.4);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 15px var(--accent-glow);
     }
 
     .hero h1 {
@@ -234,6 +258,72 @@
       max-width: 1100px;
       margin: 0 auto 7rem auto;
       padding: 0 2rem;
+    }
+
+    /* Social Hub Section (Single Card Focus) */
+    .social-container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .social-card-single {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .social-card-single:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 15px 35px rgba(255, 59, 59, 0.25);
+    }
+
+    .social-icon-large {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: rgba(255, 59, 59, 0.1);
+      width: 70px;
+      height: 70px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-card-single h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .social-card-single p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .social-btn {
+      background: #5865F2; /* Official Discord Blurple */
+      color: #fff;
+      padding: 0.75rem 1.75rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .social-card-single:hover .social-btn {
+      background: #4752C4;
     }
 
     /* About & Features Grid */
@@ -476,6 +566,7 @@
       </a>
       <nav>
         <a href="#about">About</a>
+        <a href="#community">Community</a>
         <a href="#rules">Rules</a>
         <a href="#faq">FAQ</a>
         <a href="#apply" class="nav-apply-btn">Apply Now</a>
@@ -486,8 +577,11 @@
   <main>
     <!-- Hero Section -->
     <section class="hero" id="home">
-      <div class="status-badge">
-        <span class="status-dot"></span> Season 2 Recruitment Active
+      <div class="badges-container">
+        <div class="launch-badge">🚀 Coming Aug 10</div>
+        <div class="status-badge">
+          <span class="status-dot"></span> Season 2 Recruitment Active
+        </div>
       </div>
       <h1>Private SMP Built For <span>Content Creators</span></h1>
       <p>Voul SMP is an invite-only Minecraft survival world designed for streamers, video creators, and storytellers to build, collaborate, and compete.</p>
@@ -495,6 +589,22 @@
       <div class="hero-actions">
         <a href="#apply" class="btn-primary">Submit Application &rarr;</a>
         <a href="#about" class="btn-secondary">Explore Features</a>
+      </div>
+    </section>
+
+    <!-- Social / Community Hub Section -->
+    <section id="community">
+      <h2 class="section-title">Join The Community</h2>
+      <p class="section-subtitle">Connect with our creators and stay updated in our official Discord server</p>
+
+      <div class="social-container">
+        <!-- Update href with your actual Discord Invite Link -->
+        <a href="https://discord.gg/8rzvudMUwX" target="_blank" rel="noopener" class="social-card-single">
+          <div class="social-icon-large">💬</div>
+          <h3>Official Discord Server</h3>
+          <p>Get announcement updates, chat with creators, and participate in community events.</p>
+          <span class="social-btn">Join Discord &rarr;</span>
+        </a>
       </div>
     </section>
 
