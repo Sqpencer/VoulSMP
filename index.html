@@ -1,905 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Voul SMP | Private Creator Network</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="logo.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Season 1 Official Launch Countdown</title>
   <style>
-    :root {
-      --bg-dark: #07090e;
-      --bg-card: rgba(15, 18, 28, 0.75);
-      --bg-card-hover: rgba(22, 27, 41, 0.85);
-      --bg-input: rgba(10, 12, 18, 0.9);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(255, 59, 59, 0.5);
-      --accent: #ff3b3b;
-      --accent-hover: #ff5252;
-      --accent-glow: rgba(255, 59, 59, 0.25);
-      --text-main: #f0f6fc;
-      --text-muted: #8b949e;
-      --discord: #5865F2;
-      --discord-hover: #4752C4;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      overflow-x: hidden;
-      line-height: 1.6;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(255, 59, 59, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 80% 50%, rgba(88, 101, 242, 0.05) 0%, transparent 50%);
+      background-color: #0b0c10;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      gap: 32px;
+      padding: 20px;
     }
 
-    /* Ambient Background Glow */
-    .glow-container {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
+    /* Outer Card Wrapper */
+    .countdown-card {
+      background-color: #12131a;
+      border: 1px solid #1e202d;
+      border-radius: 16px;
+      padding: 36px 40px 40px;
+      max-width: 600px;
       width: 100%;
-      max-width: 1200px;
-      height: 800px;
-      z-index: -1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .glow-blob {
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(80px);
-    }
-
-    /* Header Navigation */
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(7, 9, 14, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .logo-link {
-      text-decoration: none;
-      color: inherit;
-      display: inline-block;
-      transition: transform 0.2s ease;
-    }
-
-    .logo-link:hover {
-      transform: scale(1.02);
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-    }
-
-    nav a:hover {
-      color: var(--text-main);
-    }
-
-    .nav-apply-btn {
-      background: var(--accent);
-      color: #fff !important;
-      padding: 0.6rem 1.4rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px var(--accent-glow);
-      transition: all 0.2s ease !important;
-    }
-
-    .nav-apply-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(255, 59, 59, 0.4);
-    }
-
-    /* Hero Section */
-    .hero {
-      max-width: 900px;
-      margin: 6rem auto 7rem auto;
-      padding: 0 2rem;
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    .status-badge {
-      display: inline-flex;
+    /* Heading Text */
+    .countdown-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #a0a5b5;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    /* Grid/Flex Container for Units */
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* Unit Container */
+    .timer-unit {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
-      background: rgba(255, 59, 59, 0.1);
-      border: 1px solid rgba(255, 59, 59, 0.25);
-      padding: 0.4rem 1.1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
+      flex: 1;
+      max-width: 110px;
+    }
+
+    /* Digital Display Box */
+    .time-box {
+      background-color: #1a1c26;
+      border: 1px solid #282b3a;
+      border-radius: 12px;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 48px;
       font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 0.3px;
-      margin-bottom: 2rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Unit Label */
+    .unit-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #8c92a4;
       text-transform: uppercase;
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
+    /* Coming Soon Date Subtext */
+    .launch-date-text {
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #ff3b30;
+      text-transform: uppercase;
     }
 
-    .hero h1 {
-      font-size: clamp(3rem, 7vw, 5.2rem);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -2.5px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, #ffffff 20%, var(--accent) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 2.5rem auto;
-      font-weight: 500;
-    }
-
-    .hero-actions {
+    /* Action Buttons Area */
+    .button-group {
       display: flex;
       justify-content: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
+      gap: 16px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .btn {
+      padding: 16px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
     }
 
     .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      padding: 1rem 2.2rem;
-      border-radius: 12px;
-      font-weight: 800;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 30px var(--accent-glow);
+      background-color: #ff3b30;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(255, 59, 48, 0.4);
     }
 
     .btn-primary:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba(255, 59, 59, 0.45);
+      background-color: #e03228;
+      box-shadow: 0 6px 20px rgba(255, 59, 48, 0.6);
     }
 
     .btn-secondary {
-      background: var(--bg-card);
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      padding: 1rem 2.2rem;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      backdrop-filter: blur(10px);
+      background-color: #12131a;
+      color: #ffffff;
+      border: 1px solid #282b3a;
     }
 
     .btn-secondary:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+      background-color: #1a1c26;
+      border-color: #3a3f54;
     }
 
-    /* Common Section Formatting */
-    .section-title {
-      text-align: center;
-      font-size: 2.4rem;
-      font-weight: 900;
-      letter-spacing: -1.2px;
-      margin-bottom: 0.6rem;
+    .btn-primary .arrow {
+      margin-left: 8px;
+      font-size: 16px;
     }
 
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      margin-bottom: 3.5rem;
-      font-weight: 500;
-    }
-
-    section {
-      max-width: 1100px;
-      margin: 0 auto 8rem auto;
-      padding: 0 2rem;
-    }
-
-    /* Features Grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 1.75rem;
-    }
-
-    .feature-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2.25rem;
-      backdrop-filter: blur(12px);
-      transition: all 0.25s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(255, 59, 59, 0.35);
-      background: var(--bg-card-hover);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 1.25rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 59, 59, 0.1);
-      width: 54px;
-      height: 54px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 59, 59, 0.2);
-    }
-
-    .feature-card h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.3px;
-    }
-
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 0.98rem;
-    }
-
-    /* Rules Grid */
-    .rules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .rule-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 1.75rem;
-      border-radius: 18px;
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-      transition: all 0.2s ease;
-    }
-
-    .rule-card:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-    }
-
-    .rule-num {
-      background: rgba(255, 59, 59, 0.12);
-      color: var(--accent);
-      font-weight: 900;
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.1rem;
-      border: 1px solid rgba(255, 59, 59, 0.2);
-    }
-
-    .rule-info h4 {
-      font-size: 1.1rem;
-      font-weight: 800;
-      margin-bottom: 0.3rem;
-    }
-
-    .rule-info p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    /* FAQ Section */
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      margin-bottom: 1rem;
-      overflow: hidden;
-      transition: border-color 0.2s ease;
-    }
-
-    .faq-item:hover {
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      color: var(--text-main);
-      padding: 1.35rem 1.6rem;
-      font-size: 1.05rem;
-      font-weight: 800;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .faq-toggle {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      transition: transform 0.25s ease;
-    }
-
-    .faq-answer {
-      padding: 0 1.6rem 1.35rem 1.6rem;
-      color: var(--text-muted);
-      font-size: 0.98rem;
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
-      margin-top: 0.2rem;
-      padding-top: 1rem;
-    }
-
-    .faq-item.active .faq-answer {
-      display: block;
-    }
-
-    .faq-item.active .faq-toggle {
-      transform: rotate(45deg);
-    }
-
-    /* Discord Banner Section */
-    .discord-banner {
-      background: linear-gradient(135deg, rgba(88, 101, 242, 0.15) 0%, rgba(15, 18, 28, 0.8) 100%);
-      border: 1px solid rgba(88, 101, 242, 0.3);
-      border-radius: 24px;
-      padding: 3.5rem 2rem;
-      text-align: center;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .discord-banner h3 {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.8px;
-    }
-
-    .discord-banner p {
-      color: var(--text-muted);
-      max-width: 550px;
-      margin: 0 auto 2rem auto;
-      font-size: 1.05rem;
-    }
-
-    .btn-discord {
-      background: var(--discord);
-      color: #fff;
-      padding: 0.95rem 2.2rem;
-      border-radius: 12px;
-      font-weight: 800;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3);
-    }
-
-    .btn-discord:hover {
-      background: var(--discord-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(88, 101, 242, 0.45);
-    }
-
-    /* Application Form Section */
-    .form-container {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .form-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 3rem;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .form-group {
-      margin-bottom: 1.6rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.92rem;
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-      color: var(--text-main);
-      letter-spacing: -0.2px;
-    }
-
-    .form-group label span {
-      color: var(--accent);
-    }
-
-    .form-control {
-      width: 100%;
-      background: var(--bg-input);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.95rem 1.1rem;
-      color: var(--text-main);
-      font-size: 0.98rem;
-      transition: all 0.2s ease;
-      outline: none;
-    }
-
-    .form-control:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px var(--accent-glow);
-    }
-
-    textarea.form-control {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
-    @media (max-width: 650px) {
-      .form-row {
-        grid-template-columns: 1fr;
+    @media (max-width: 480px) {
+      .countdown-timer {
+        gap: 8px;
       }
-      .form-card {
-        padding: 2rem 1.5rem;
+      .time-box {
+        font-size: 32px;
       }
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 1.1rem;
-      border-radius: 12px;
-      font-size: 1.05rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 25px var(--accent-glow);
-      margin-top: 0.5rem;
-    }
-
-    .submit-btn:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(255, 59, 59, 0.5);
-    }
-
-    .success-message {
-      display: none;
-      text-align: center;
-      padding: 2.5rem 1rem;
-    }
-
-    .success-icon {
-      font-size: 3.5rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .success-message h3 {
-      font-size: 1.8rem;
-      font-weight: 900;
-      margin-bottom: 0.5rem;
-    }
-
-    .success-message p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 3.5rem 2rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    footer p + p {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      opacity: 0.7;
+      .button-group {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="glow-container">
-    <div class="glow-blob"></div>
+  <!-- Countdown Card -->
+  <div class="countdown-card">
+    <div class="countdown-title">Season 1 Official Launch Countdown</div>
+    <div class="countdown-timer">
+      <div class="timer-unit">
+        <div class="time-box" id="days">02</div>
+        <div class="unit-label">Days</div>
+      </div>
+      <div class="timer-unit">
+        <div class="time-box" id="hours">16</div>
+        <div class="unit-label">Hours</div>
+      </div>
+      <div class="timer-unit">
+        <div class="time-box" id="minutes">50</div>
+        <div class="unit-label">Mins</div>
+      </div>
+      <div class="timer-unit">
+        <div class="time-box" id="seconds">50</div>
+        <div class="unit-label">Secs</div>
+      </div>
+    </div>
+    <div class="launch-date-text">Coming Aug 10</div>
   </div>
 
-  <!-- Header Navigation -->
-  <header>
-    <div class="header-inner">
-      <a href="#home" class="logo-link" onclick="resetToHome()">
-        <div class="logo">VOUL<span>SMP</span></div>
-      </a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#community">Community</a>
-        <a href="#rules">Rules</a>
-        <a href="#faq">FAQ</a>
-        <a href="#apply" class="nav-apply-btn">Apply Now</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Action Buttons -->
+  <div class="button-group">
+    <button class="btn btn-primary">
+      Submit Application <span class="arrow">&rarr;</span>
+    </button>
+    <button class="btn btn-secondary">
+      Explore Features
+    </button>
+  </div>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="status-badge">
-        <span class="status-dot"></span> Season 1 Applications Open
-      </div>
-      <h1>Private SMP Built For <span>Content Creators</span></h1>
-      <p>Voul SMP is an invite-only Minecraft survival server designed for streamers, video creators, and storytellers to collaborate, build, and produce high-tier content.</p>
-      
-      <div class="hero-actions">
-        <a href="#apply" class="btn-primary">Apply For Whitelist &rarr;</a>
-        <a href="#about" class="btn-secondary">Explore Features</a>
-      </div>
-    </section>
-
-    <!-- Community Banner Section -->
-    <section id="community">
-      <div class="discord-banner">
-        <h3>Join The Creator Hub</h3>
-        <p>Stay up to date with server announcements, connect with roster creators, and join community discussions.</p>
-        <a href="https://discord.gg/8rzvudMUwX" target="_blank" rel="noopener" class="btn-discord">
-          <span>💬</span> Join Official Discord
-        </a>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="about">
-      <h2 class="section-title">Designed For Content</h2>
-      <p class="section-subtitle">A platform focused on storytelling, collaboration, and high-performance gameplay</p>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🎬</div>
-          <h3>Collaborative Storylines</h3>
-          <p>A server culture tailored for joint videos, lore streams, community events, and organic rivalries.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h3>Dedicated Infrastructure</h3>
-          <p>Hosted on high-performance enterprise hardware with optimized server configurations for seamless gameplay.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🏰</div>
-          <h3>Custom Hub & Districts</h3>
-          <p>Spawn districts designed for player trading, event arenas, and organized portal networks to keep the world connected.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Rules Section -->
-    <section id="rules">
-      <h2 class="section-title">Server Guidelines</h2>
-      <p class="section-subtitle">Core policies ensuring a fair and creative environment for all members</p>
-
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-num">1</div>
-          <div class="rule-info">
-            <h4>No Unscripted Griefing</h4>
-            <p>Destruction or stealing outside agreed content storylines is strictly forbidden.</p>
-          </div>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-num">2</div>
-          <div class="rule-info">
-            <h4>Respect Filming Sessions</h4>
-            <p>Do not interrupt streams or recording sessions without prior communication.</p>
-          </div>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-num">3</div>
-          <div class="rule-info">
-            <h4>Zero Tolerance Cheating</h4>
-            <p>X-Ray, modified client exploits, or unfair mods result in an immediate whitelist ban.</p>
-          </div>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-num">4</div>
-          <div class="rule-info">
-            <h4>Active Discord Presence</h4>
-            <p>A working microphone and active communication in Discord are mandatory for roster members.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-subtitle">Everything you need to know before submitting your application</p>
-
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            What content platforms are accepted? <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            We review creators from YouTube, Twitch, TikTok, and Kick. Content quality and audience engagement take priority over raw subscriber counts.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            Which Minecraft edition is required? <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            Voul SMP runs on Minecraft Java Edition on the latest stable release.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            How long does application review take? <span class="faq-toggle">+</span>
-          </button>
-          <div class="faq-answer">
-            Applications are reviewed continuously. Accepted candidates will be contacted via Discord within 24 to 48 hours.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Application Form Section -->
-    <section id="apply">
-      <h2 class="section-title">Apply For Whitelist</h2>
-      <p class="section-subtitle">Submit your channel information to apply for the Season 1 roster</p>
-
-      <div class="form-container">
-        <div class="form-card">
-          
-          <form id="smpForm" onsubmit="handleFormSubmit(event)">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="username">Minecraft IGN <span>*</span></label>
-                <input type="text" id="username" class="form-control" placeholder="e.g. Steve" required>
-              </div>
-
-              <div class="form-group">
-                <label for="discord">Discord Username <span>*</span></label>
-                <input type="text" id="discord" class="form-control" placeholder="e.g. username" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="platform">Primary Platform <span>*</span></label>
-              <select id="platform" class="form-control" required>
-                <option value="" disabled selected>Select primary platform...</option>
-                <option value="YouTube">YouTube</option>
-                <option value="Twitch">Twitch</option>
-                <option value="TikTok">TikTok / Shorts</option>
-                <option value="Kick">Kick</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="channelUrl">Channel Link <span>*</span></label>
-              <input type="url" id="channelUrl" class="form-control" placeholder="https://youtube.com/@yourchannel" required>
-            </div>
-
-            <div class="form-group">
-              <label for="description">Content Vision & Goals <span>*</span></label>
-              <textarea id="description" class="form-control" placeholder="Tell us about your content style and ideas for Voul SMP..." required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit Application &rarr;</button>
-          </form>
-
-          <!-- Success Screen -->
-          <div id="successMessage" class="success-message">
-            <div class="success-icon">🎉</div>
-            <h3>Application Received</h3>
-            <p>Thank you for applying to Voul SMP. Our team will review your application and reach out via Discord if selected.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Voul SMP. All rights reserved.</p>
-    <p>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
-  </footer>
-
-  <script>
-    function resetToHome() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      const smpForm = document.getElementById('smpForm');
-      const successMessage = document.getElementById('successMessage');
-      
-      if (smpForm && successMessage) {
-        smpForm.reset();
-        smpForm.style.display = 'block';
-        successMessage.style.display = 'none';
-      }
-    }
-
-    function toggleFaq(button) {
-      const item = button.parentElement;
-      item.classList.toggle('active');
-    }
-
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      
-      const webhookURL = "https://discordapp.com/api/webhooks/1535459216133988443/7aHsS4LNIlUfjlrPps0ulrHhMA0hmEUDS89zoue1F3aYu9tUwbeagZs1mDYCvVnOz0zp";
-      
-      const username = document.getElementById('username').value;
-      const discord = document.getElementById('discord').value;
-      const platform = document.getElementById('platform').value;
-      const channelUrl = document.getElementById('channelUrl').value;
-      const description = document.getElementById('description').value;
-
-      const payload = {
-        username: "Voul SMP Applications",
-        avatar_url: "https://i.imgur.com/8N4X0a4.png",
-        embeds: [{
-          title: "🚨 New Whitelist Application",
-          description: `**${username}** submitted an application for **Voul SMP Season 1**.`,
-          color: 16726587,
-          fields: [
-            {
-              name: "👤 Minecraft IGN",
-              value: `\`${username}\``,
-              inline: true
-            },
-            {
-              name: "💬 Discord",
-              value: `\`${discord}\``,
-              inline: true
-            },
-            {
-              name: "📺 Platform",
-              value: `\`${platform}\``,
-              inline: true
-            },
-            {
-              name: "🔗 Channel Link",
-              value: `[View Channel](${channelUrl})\n\`${channelUrl}\``,
-              inline: false
-            },
-            {
-              name: "📝 Content Vision",
-              value: `>>> ${description}`,
-              inline: false
-            }
-          ],
-          footer: {
-            text: "Voul SMP • Application System"
-          },
-          timestamp: new Date().toISOString()
-        }]
-      };
-
-      fetch(webhookURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-      .then(response => {
-        if (response.ok) {
-          document.getElementById('smpForm').style.display = 'none';
-          document.getElementById('successMessage').style.display = 'block';
-        } else {
-          alert("Error sending application. Please check your network or webhook link.");
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert("Something went wrong. Please try again.");
-      });
-    }
-  </script>
 </body>
 </html>
