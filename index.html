@@ -181,26 +181,6 @@
       box-shadow: 0 0 15px var(--accent-glow);
     }
 
-    /* Countdown Iframe Container */
-    .countdown-embed-wrapper {
-      width: 100%;
-      max-width: 520px;
-      margin: 1.5rem auto 2.5rem auto;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--bg-card);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .countdown-embed-wrapper iframe {
-      width: 100%;
-      height: 160px;
-      border: none;
-      display: block;
-    }
-
     .hero h1 {
       font-size: clamp(2.8rem, 6vw, 5rem);
       font-weight: 900;
@@ -219,7 +199,62 @@
       font-size: 1.2rem;
       color: var(--text-muted);
       max-width: 650px;
+      margin: 0 auto 2rem auto;
+    }
+
+    /* Countdown Timer Styles */
+    .countdown-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      max-width: 550px;
       margin: 0 auto 2.5rem auto;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .countdown-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .timer-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 65px;
+    }
+
+    .timer-number {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text-main);
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.25rem 0.75rem;
+      width: 100%;
+      text-align: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .timer-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 0.4rem;
     }
 
     .hero-actions {
@@ -284,7 +319,7 @@
       padding: 0 2rem;
     }
 
-    /* Social Hub Section */
+    /* Social Hub Section (Single Card Focus) */
     .social-container {
       max-width: 500px;
       margin: 0 auto;
@@ -336,7 +371,7 @@
     }
 
     .social-btn {
-      background: #5865F2;
+      background: #5865F2; /* Official Discord Blurple */
       color: #fff;
       padding: 0.75rem 1.75rem;
       border-radius: 10px;
@@ -602,25 +637,37 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="badges-container">
-        <div class="launch-badge">🚀 Season 2 Launch</div>
+        <div class="launch-badge">🚀 Launching Aug 10</div>
         <div class="status-badge">
-          <span class="status-dot"></span> Recruitment Active
+          <span class="status-dot"></span> Season 2 Recruitment Active
+        </div>
+      </div>
+      <h1>Private SMP Built For <span>Content Creators</span></h1>
+      <p>Voul SMP is an invite-only Minecraft survival world designed for streamers, video creators, and storytellers to build, collaborate, and compete.</p>
+      
+      <!-- Countdown Component -->
+      <div class="countdown-wrapper">
+        <div class="countdown-title">Season 2 Official Launch Countdown</div>
+        <div class="countdown-timer" id="countdown">
+          <div class="timer-block">
+            <span class="timer-number" id="days">00</span>
+            <span class="timer-label">Days</span>
+          </div>
+          <div class="timer-block">
+            <span class="timer-number" id="hours">00</span>
+            <span class="timer-label">Hours</span>
+          </div>
+          <div class="timer-block">
+            <span class="timer-number" id="minutes">00</span>
+            <span class="timer-label">Mins</span>
+          </div>
+          <div class="timer-block">
+            <span class="timer-number" id="seconds">00</span>
+            <span class="timer-label">Secs</span>
+          </div>
         </div>
       </div>
 
-      <h1>Private SMP Built For <span>Content Creators</span></h1>
-
-      <!-- Embedded Countdown Widget (No Script Required) -->
-      <div class="countdown-embed-wrapper">
-        <iframe 
-          src="https://cdn.logwork.com/widget/countdown.html?text=Season+2+Launch&timezone=America%2FNew_York&date=2026-08-10+00%3A00&cpv=6&box_background=%2312161f&text_color=%23f0f6fc&title_color=%23ff3b3b&tag_color=%238b949e" 
-          title="Countdown to August 10" 
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <p>Voul SMP is an invite-only Minecraft survival world designed for streamers, video creators, and storytellers to build, collaborate, and compete.</p>
-      
       <div class="hero-actions">
         <a href="#apply" class="btn-primary">Submit Application &rarr;</a>
         <a href="#about" class="btn-secondary">Explore Features</a>
@@ -633,6 +680,7 @@
       <p class="section-subtitle">Connect with our creators and stay updated in our official Discord server</p>
 
       <div class="social-container">
+        <!-- Update href with your actual Discord Invite Link -->
         <a href="https://discord.gg/8rzvudMUwX" target="_blank" rel="noopener" class="social-card-single">
           <div class="social-icon-large">💬</div>
           <h3>Official Discord Server</h3>
@@ -804,6 +852,33 @@
   </footer>
 
   <script>
+    // Countdown Timer logic for Aug 10, 9:00 PM EST
+    function updateCountdown() {
+      // August 10, 2026 at 21:00:00 EST (UTC-5)
+      const targetDate = new Date("2026-08-10T21:00:00-05:00").getTime();
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        document.getElementById("countdown").innerHTML = "<h3 style='color: var(--accent); font-weight: 900;'>LAUNCHED!</h3>";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = String(days).padStart(2, '0');
+      document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    }
+
+    // Run interval
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
     // Reset page back to home view when logo is clicked
     function resetToHome() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -826,15 +901,78 @@
       span.innerText = item.classList.contains('active') ? '-' : '+';
     }
 
-    // Form Submit Handler
+    // Submit form handler
     function handleFormSubmit(event) {
       event.preventDefault();
+      
+      // DISCORD WEBHOOK URL EMBEDDED BELOW:
+      const webhookURL = "https://discordapp.com/api/webhooks/1535459216133988443/7aHsS4LNIlUfjlrPps0ulrHhMA0hmEUDS89zoue1F3aYu9tUwbeagZs1mDYCvVnOz0zp";
+      
+      const username = document.getElementById('username').value;
+      const discord = document.getElementById('discord').value;
+      const platform = document.getElementById('platform').value;
+      const channelUrl = document.getElementById('channelUrl').value;
+      const description = document.getElementById('description').value;
 
-      const smpForm = document.getElementById('smpForm');
-      const successMessage = document.getElementById('successMessage');
+      // Styled, high-readability Discord Embed Payload
+      const payload = {
+        username: "Voul SMP Applications",
+        avatar_url: "https://i.imgur.com/8N4X0a4.png",
+        embeds: [{
+          title: "🚨 New Creator Application Submitted",
+          description: `**${username}** has submitted an application for **Voul SMP Season 2**.`,
+          color: 16726587,
+          fields: [
+            {
+              name: "👤 Minecraft IGN",
+              value: `\`${username}\``,
+              inline: true
+            },
+            {
+              name: "💬 Discord Username",
+              value: `\`${discord}\``,
+              inline: true
+            },
+            {
+              name: "📺 Platform",
+              value: `\`${platform}\``,
+              inline: true
+            },
+            {
+              name: "🔗 Channel / Portfolio Link",
+              value: `[Click Here to Open Channel](${channelUrl})\n\`${channelUrl}\``,
+              inline: false
+            },
+            {
+              name: "📝 Content Style & Season Goals",
+              value: `>>> ${description}`,
+              inline: false
+            }
+          ],
+          footer: {
+            text: "Voul SMP • Whitelist Application System"
+          },
+          timestamp: new Date().toISOString()
+        }]
+      };
 
-      smpForm.style.display = 'none';
-      successMessage.style.display = 'block';
+      fetch(webhookURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (response.ok) {
+          document.getElementById('smpForm').style.display = 'none';
+          document.getElementById('successMessage').style.display = 'block';
+        } else {
+          alert("Error sending application. Please check your network or Discord Webhook connection.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("Something went wrong. Please try again.");
+      });
     }
   </script>
 </body>
