@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voul SMP | Private Creator Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #080a0f;
+      --bg-card: rgba(18, 22, 31, 0.75);
+      --bg-input: rgba(10, 12, 16, 0.85);
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #ff3b3b;
+      --accent-glow: rgba(255, 59, 59, 0.35);
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --green: #238636;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .glow-top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1200px;
+      height: 700px;
+      background: radial-gradient(circle at 50% 20%, var(--accent-glow) 0%, rgba(8, 10, 15, 0) 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Header Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(8, 10, 15, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo-link {
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+      transition: opacity 0.2s ease;
+    }
+
+    .logo-link:hover {
+      opacity: 0.85;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-apply-btn {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px var(--accent-glow);
+      transition: transform 0.2s ease;
+    }
+
+    .nav-apply-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 900px;
+      margin: 4rem auto 6rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(35, 134, 54, 0.15);
+      border: 1px solid rgba(35, 134, 54, 0.4);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #3fb950;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #3fb950;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #3fb950;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 2.5rem auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 25px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(255, 59, 59, 0.5);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: 0.9rem 2rem;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* Common Section Titles */
+    .section-title {
+      text-align: center;
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Section Wrapper */
+    section {
+      max-width: 1100px;
+      margin: 0 auto 7rem auto;
+      padding: 0 2rem;
+    }
+
+    /* About & Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 59, 59, 0.4);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      background: rgba(255, 59, 59, 0.1);
+      padding: 0.6rem;
+      border-radius: 12px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Rules Section */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .rule-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 14px;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .rule-num {
+      background: rgba(255, 59, 59, 0.15);
+      color: var(--accent);
+      font-weight: 900;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .rule-info h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .rule-info p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* FAQ Section */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      padding: 1.25rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.25rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* Application Form Section */
+    .form-container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .form-group label span {
+      color: var(--accent);
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 20px var(--accent-glow);
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(255, 59, 59, 0.5);
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .success-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-top"></div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="header-inner">
+      <a href="#home" class="logo-link" onclick="resetToHome()">
+        <div class="logo">VOUL<span>SMP</span></div>
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#rules">Rules</a>
+        <a href="#faq">FAQ</a>
+        <a href="#apply" class="nav-apply-btn">Apply Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="status-badge">
+        <span class="status-dot"></span> Season 2 Recruitment Active
+      </div>
+      <h1>Private SMP Built For <span>Content Creators</span></h1>
+      <p>Voul SMP is an invite-only Minecraft survival world designed for streamers, video creators, and storytellers to build, collaborate, and compete.</p>
+      
+      <div class="hero-actions">
+        <a href="#apply" class="btn-primary">Submit Application &rarr;</a>
+        <a href="#about" class="btn-secondary">Explore Features</a>
+      </div>
+    </section>
+
+    <!-- About / Features Section -->
+    <section id="about">
+      <h2 class="section-title">What Is Voul SMP?</h2>
+      <p class="section-subtitle">Designed specifically for high-quality content production and collaboration</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎬</div>
+          <h3>Content-Driven Lore</h3>
+          <p>A server culture built around storytelling, joint video projects, server events, and friendly faction rivalries.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Optimized Performance</h3>
+          <p>Hosted on dedicated hardware with custom optimization plugins to guarantee high TPS during massive stream events.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏰</div>
+          <h3>Custom Spawn Hub</h3>
+          <p>A protected community spawn with trading districts, event arenas, and portal networks to kickstart server storylines.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Server Rules Section -->
+    <section id="rules">
+      <h2 class="section-title">Server Rules</h2>
+      <p class="section-subtitle">Keeping the server fair, fun, and content-friendly for everyone</p>
+
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-num">1</div>
+          <div class="rule-info">
+            <h4>No Griefing or Stealing</h4>
+            <p>Unscripted griefing or stealing outside of agreed lore storylines is strictly banned.</p>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">2</div>
+          <div class="rule-info">
+            <h4>Respect Content Filming</h4>
+            <p>Do not stream-snipe or ruin filming sessions without prior consent from other creators.</p>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">3</div>
+          <div class="rule-info">
+            <h4>Fair Play & Hacks</h4>
+            <p>X-Ray packs, cheat clients, or performance exploits result in an instant whitelist revocation.</p>
+          </div>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-num">4</div>
+          <div class="rule-info">
+            <h4>Clear Communication</h4>
+            <p>A working microphone and active presence on Discord are required for group collabs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-subtitle">Got questions before applying? We've got answers.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What platforms do you accept? <span>+</span>
+          </button>
+          <div class="faq-answer">
+            We accept creators uploading or streaming on YouTube, Twitch, TikTok, or Kick. Channel size matters less than video quality and consistency!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is the server Java or Bedrock? <span>+</span>
+          </button>
+          <div class="faq-answer">
+            Voul SMP is hosted on Minecraft Java Edition on the latest stable release version.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How long does application review take? <span>+</span>
+          </button>
+          <div class="faq-answer">
+            Our team reviews channel applications continuously. If accepted, you will receive a Discord invite within 24-48 hours.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section id="apply">
+      <h2 class="section-title">Apply For Whitelist</h2>
+      <p class="section-subtitle">Fill out the form below to submit your channel for Season 2 review</p>
+
+      <div class="form-container">
+        <div class="form-card">
+          
+          <form id="smpForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="username">Minecraft Username <span>*</span></label>
+                <input type="text" id="username" class="form-control" placeholder="e.g. Steve" required>
+              </div>
+
+              <div class="form-group">
+                <label for="discord">Discord Tag <span>*</span></label>
+                <input type="text" id="discord" class="form-control" placeholder="e.g. username" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="platform">Primary Content Platform <span>*</span></label>
+              <select id="platform" class="form-control" required>
+                <option value="" disabled selected>Select Platform...</option>
+                <option value="YouTube">YouTube</option>
+                <option value="Twitch">Twitch</option>
+                <option value="TikTok">TikTok / Shorts</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="channelUrl">Channel Link / Portfolio <span>*</span></label>
+              <input type="url" id="channelUrl" class="form-control" placeholder="https://youtube.com/@yourchannel" required>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Tell us about your content style & goals on Voul SMP <span>*</span></label>
+              <textarea id="description" class="form-control" placeholder="What kind of builds, storylines, or collabs are you planning?" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Application &rarr;</button>
+          </form>
+
+          <!-- Success Screen -->
+          <div id="successMessage" class="success-message">
+            <div class="success-icon">🎉</div>
+            <h3>Application Received!</h3>
+            <p>Thanks for applying to Voul SMP. We'll review your channel and reach out on Discord if you're selected for the roster.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Voul SMP. Private Creator Network.</p>
+    <p style="margin-top: 0.5rem;">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+  </footer>
+
+  <script>
+    // Reset page back to home view when logo is clicked
+    function resetToHome() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      const smpForm = document.getElementById('smpForm');
+      const successMessage = document.getElementById('successMessage');
+      
+      if (smpForm && successMessage) {
+        smpForm.reset();
+        smpForm.style.display = 'block';
+        successMessage.style.display = 'none';
+      }
+    }
+
+    // Toggle FAQ Accordion
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      item.classList.toggle('active');
+      const span = button.querySelector('span');
+      span.innerText = item.classList.contains('active') ? '-' : '+';
+    }
+
+    // Submit form handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      // DISCORD WEBHOOK URL EMBEDDED BELOW:
+      const webhookURL = "https://discordapp.com/api/webhooks/1535459216133988443/7aHsS4LNIlUfjlrPps0ulrHhMA0hmEUDS89zoue1F3aYu9tUwbeagZs1mDYCvVnOz0zp";
+      
+      const username = document.getElementById('username').value;
+      const discord = document.getElementById('discord').value;
+      const platform = document.getElementById('platform').value;
+      const channelUrl = document.getElementById('channelUrl').value;
+      const description = document.getElementById('description').value;
+
+      // Styled, high-readability Discord Embed Payload
+      const payload = {
+        username: "Voul SMP Applications",
+        avatar_url: "https://i.imgur.com/8N4X0a4.png",
+        embeds: [{
+          title: "🚨 New Creator Application Submitted",
+          description: `**${username}** has submitted an application for **Voul SMP Season 2**.`,
+          color: 16726587,
+          fields: [
+            {
+              name: "👤 Minecraft IGN",
+              value: `\`${username}\``,
+              inline: true
+            },
+            {
+              name: "💬 Discord Username",
+              value: `\`${discord}\``,
+              inline: true
+            },
+            {
+              name: "📺 Platform",
+              value: `\`${platform}\``,
+              inline: true
+            },
+            {
+              name: "🔗 Channel / Portfolio Link",
+              value: `[Click Here to Open Channel](${channelUrl})\n\`${channelUrl}\``,
+              inline: false
+            },
+            {
+              name: "📝 Content Style & Season Goals",
+              value: `>>> ${description}`,
+              inline: false
+            }
+          ],
+          footer: {
+            text: "Voul SMP • Whitelist Application System"
+          },
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      fetch(webhookURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (response.ok) {
+          document.getElementById('smpForm').style.display = 'none';
+          document.getElementById('successMessage').style.display = 'block';
+        } else {
+          alert("Error sending application. Please check your network or Discord Webhook connection.");
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("Something went wrong. Please try again.");
+      });
+    }
+  </script>
+</body>
+</html>
