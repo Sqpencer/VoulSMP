@@ -9,21 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:            #140a09;
-    --bg-2:          #1d100d;
-    --bg-3:          #261311;
-    --crimson:       #b3231c;
+    --bg:             #140a09;
+    --bg-2:           #1d100d;
+    --bg-3:           #261311;
+    --crimson:        #b3231c;
     --crimson-bright:#e8362a;
-    --ember:         #ff8a3d;
-    --ember-soft:    #ffb673;
-    --portal:        #8b3fd1;
-    --portal-soft:   #b784ec;
-    --ash:           #ede1d3;
-    --ash-dim:       #b8a696;
-    --ash-faint:     #7c6a5c;
-    --line:          rgba(237,225,211,0.10);
-    --line-bright:   rgba(255,138,61,0.35);
-    --radius:        2px;
+    --ember:          #ff8a3d;
+    --ember-soft:     #ffb673;
+    --portal:         #8b3fd1;
+    --portal-soft:    #b784ec;
+    --ash:            #ede1d3;
+    --ash-dim:        #b8a696;
+    --ash-faint:      #7c6a5c;
+    --line:           rgba(237,225,211,0.10);
+    --line-bright:    rgba(255,138,61,0.35);
+    --radius:         2px;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
@@ -618,15 +618,13 @@
 
   // ==========================================================
   // DISCORD WEBHOOK CONFIG
-  // Paste your Discord channel webhook URL below.
-  // Discord > Server Settings > Integrations > Webhooks > New Webhook > Copy URL
   // ==========================================================
   const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1535459216133988443/7aHsS4LNIlUfjlrPps0ulrHhMA0hmEUDS89zoue1F3aYu9tUwbeagZs1mDYCvVnOz0zp";
-  const DISCORD_INVITE_URL = "https://discord.gg/sFf2T48wAW";
+  const DISCORD_INVITE_URL = "https://discord.gg/QKpgNu4qcH";
   const YOUTUBE_URL = "https://www.youtube.com/@VoulSMP";
 
-  const discordTarget = DISCORD_INVITE_URL.startsWith('http') ? https://discord.gg/GBBdgz5WFx : '#apply';
-  const youtubeTarget = YOUTUBE_URL.startsWith('http') ? https://www.youtube.com/@VoulSMP : '#';
+  const discordTarget = DISCORD_INVITE_URL.startsWith('http') ? DISCORD_INVITE_URL : '#apply';
+  const youtubeTarget = YOUTUBE_URL.startsWith('http') ? YOUTUBE_URL : '#';
 
   document.getElementById('discordLink').href = discordTarget;
   document.getElementById('discordLinkNav').href = discordTarget;
@@ -679,7 +677,7 @@
     statusBox.className = '';
 
     try {
-      const res = await fetch(https://discord.com/api/webhooks/1535459216133988443/7aHsS4LNIlUfjlrPps0ulrHhMA0hmEUDS89zoue1F3aYu9tUwbeagZs1mDYCvVnOz0zp, {
+      const res = await fetch(DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ embeds: [embed] })
